@@ -116,15 +116,6 @@ Running without Docker works too. See the systemd examples in each folder's READ
 
 Details are in [`gambling-website-bot/README.md`](gambling-website-bot/README.md#security).
 
-## Tests
-
-```bash
-cd gambling-bot && npm test && npm run check:locales
-cd gambling-website-bot && npm test
-```
-
-The tests cover the economy, every game's rules and payouts, poker (hand evaluator, side pots, a full hand), blackjack tables, the website's API with rigged decks, login, sessions and the locale files.
-
 ## Changelog
 
 What changed in each version, why, and how it was tested is in [`gambling-bot/WRITEUP.md`](gambling-bot/WRITEUP.md) and [`gambling-website-bot/WRITEUP.md`](gambling-website-bot/WRITEUP.md).

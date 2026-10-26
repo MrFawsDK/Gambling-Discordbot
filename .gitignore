@@ -10,3 +10,7 @@ data/
 
 # Personal notes, not part of the project
 gambling-bot/docs/
+
+# Tests stay local
+gambling-bot/test/
+gambling-website-bot/test/
