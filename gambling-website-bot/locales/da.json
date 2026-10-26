@@ -1,0 +1,453 @@
+{
+  "app": {
+    "title": "Gambling Bot",
+    "tagline": "Statistik og spil til Discord-botten. Dine coins er falske, dramaet er ægte."
+  },
+  "nav": {
+    "stats": "Statistik",
+    "me": "Min statistik",
+    "play": "Spil",
+    "login": "Log ind med Discord",
+    "logout": "Log ud",
+    "server": "Server",
+    "admin": "Admin"
+  },
+  "common": {
+    "coins": "{amount} coins",
+    "balance": "Saldo: {amount}",
+    "loading": "Indlæser...",
+    "unknownPlayer": "Ukendt spiller",
+    "empty": "Intet her endnu.",
+    "bet": "Indsats",
+    "play": "Spil",
+    "multiplier": "{value}×",
+    "percent": "{value} %",
+    "sources": {
+      "discord": "Discord",
+      "web": "Websitet"
+    },
+    "games": {
+      "coinflip": "Coinflip",
+      "rps": "Sten, saks, papir",
+      "blackjack": "Blackjack",
+      "slots": "Slots",
+      "mines": "Mines",
+      "roulette": "Roulette",
+      "poker": "Poker",
+      "unknown": "Andet",
+      "plinko": "Plinko"
+    }
+  },
+  "home": {
+    "loggedOutTitle": "Log ind for at se dine servere",
+    "loggedOutText": "Log ind med Discord for at se statistik og spille med de samme coins som i botten. Vi ser kun dit navn, din avatar og hvilke servere du er på.",
+    "noGuildsTitle": "Ingen servere endnu",
+    "noGuildsText": "Du er ikke på en server med botten, eller botten er ikke startet siden den fik website-understøttelse. Brug en kommando i Discord og prøv igen.",
+    "loginFailed": "Login virkede ikke. Prøv igen.",
+    "footer": "Kun falske coins. De kan hverken købes eller udbetales."
+  },
+  "stats": {
+    "title": "Statistik for {server}",
+    "overview": {
+      "games": "Spil spillet",
+      "players": "Spillere",
+      "activePlayers": "Har spillet",
+      "wagered": "Satset i alt",
+      "paidOut": "Udbetalt",
+      "houseProfit": "Husets overskud",
+      "coins": "Coins i omløb"
+    },
+    "perGameTitle": "Spil",
+    "columns": {
+      "game": "Spil",
+      "games": "Spil",
+      "wagered": "Satset",
+      "paidOut": "Udbetalt",
+      "rtp": "Tilbage",
+      "winRate": "Vundet",
+      "biggestWin": "Største gevinst"
+    },
+    "dailyTitle": "Seneste 14 dage",
+    "dailyBar": "{date}: {games} spil",
+    "leaderboardsTitle": "Toplister",
+    "leaderboards": {
+      "richest": "Rigeste",
+      "profit": "Mest overskud",
+      "games": "Flest spil"
+    },
+    "recentTitle": "Seneste spil",
+    "biggestWinsTitle": "Største gevinster",
+    "sourcesLine": "{discord} spil i Discord · {web} på websitet",
+    "historyNote": "Spilhistorikken starter med den version, der tilføjede websitet. Ældre spil tæller kun med i totaler og toplister.",
+    "gameRow": "{game} for {stake}",
+    "won": "vandt {amount}",
+    "lost": "tabte {amount}",
+    "even": "fik indsatsen tilbage"
+  },
+  "me": {
+    "title": "Din statistik på {server}",
+    "balance": "Saldo",
+    "gamesPlayed": "Spil spillet",
+    "winRate": "Vinderprocent",
+    "net": "Resultat",
+    "streak": "Daily-streak",
+    "neverPlayed": "Du har ikke spillet på denne server endnu. Dit første spil giver dig startbeløbet på {amount}.",
+    "recentTitle": "Dine seneste spil",
+    "perGameTitle": "Pr. spil"
+  },
+  "play": {
+    "title": "Spil",
+    "intro": "Samme coins og samme odds som i Discord. Alt afgøres på serveren.",
+    "betHint": "{min}–{max} coins",
+    "won": "Du vandt {amount}",
+    "lost": "Du tabte {amount}",
+    "push": "Du fik dine {amount} tilbage",
+    "half": "½",
+    "double": "2×",
+    "min": "Min",
+    "max": "Maks",
+    "history": "Seneste resultater",
+    "noHistory": "Ingen endnu."
+  },
+  "coinflip": {
+    "description": "50/50 mod huset. Dobbelt eller ingenting.",
+    "heads": "Krone",
+    "tails": "Plat",
+    "landed": "Mønten landede på {side}.",
+    "yourSide": "Din side",
+    "flip": "Kast mønten",
+    "pickSide": "Vælg side og indsats, og kast mønten.",
+    "flipping": "Mønten er i luften...",
+    "short": {
+      "heads": "K",
+      "tails": "P"
+    }
+  },
+  "slots": {
+    "description": "Tre maskiner med forskellig risiko. Op til {max} spins ad gangen.",
+    "machine": "Maskine",
+    "spins": "Spins",
+    "spin": "Drej",
+    "machines": {
+      "fruit": {
+        "name": "Frugt",
+        "description": "lav risiko, mange små gevinster"
+      },
+      "classic": {
+        "name": "Klassisk",
+        "description": "den gode gamle enarmede tyveknægt"
+      },
+      "jackpot": {
+        "name": "Jackpot",
+        "description": "fem hjul, høj risiko, op til 1000×"
+      }
+    },
+    "odds": "Vinderchance {winChance} % · tilbagebetaling {rtp} %",
+    "combo": "{count} ens {symbol}: {multiplier}× = {amount}",
+    "total": "{spins} spins: du satsede {stake} og fik {paid} tilbage.",
+    "payTable": "Gevinsttabel",
+    "payRow": "{count} ens: {multiplier}×",
+    "lcdBet": "Indsats",
+    "lcdSpin": "Spin",
+    "lcdWin": "Gevinst",
+    "noWin": "Ingen gevinst"
+  },
+  "roulette": {
+    "description": "Europæisk roulette med ét nul. Klik på bordet for at vælge din indsats: et tal, en farve eller en gruppe.",
+    "spin": "Spin",
+    "types": {
+      "red": "Rød",
+      "black": "Sort",
+      "even": "Lige",
+      "odd": "Ulige",
+      "low": "Lav (1–18)",
+      "high": "Høj (19–36)",
+      "dozen1": "1. dusin (1–12)",
+      "dozen2": "2. dusin (13–24)",
+      "dozen3": "3. dusin (25–36)",
+      "column1": "1. kolonne",
+      "column2": "2. kolonne",
+      "column3": "3. kolonne"
+    },
+    "straight": "Tallet {number}",
+    "colors": {
+      "red": "rød",
+      "black": "sort",
+      "green": "grøn"
+    },
+    "landed": "Kuglen landede på {number} ({color}).",
+    "tableLabel": "Roulettebord",
+    "twoToOne": "2:1",
+    "yourBet": "Din indsats: {what} · betaler {pays}×",
+    "noMoreBets": "Rien ne va plus...",
+    "short": {
+      "low": "1–18",
+      "high": "19–36",
+      "even": "Lige",
+      "odd": "Ulige",
+      "red": "Rød",
+      "black": "Sort",
+      "dozen1": "1. 12",
+      "dozen2": "2. 12",
+      "dozen3": "3. 12"
+    }
+  },
+  "mines": {
+    "description": "Find diamanter og tag gevinsten, før du rammer en mine. Maks {max}×.",
+    "mines": "Miner",
+    "start": "Start",
+    "cashOut": "Tag gevinsten {amount}",
+    "idle": "Gevinsten tages automatisk kl. {time}, hvis du ikke trykker.",
+    "tile": "Felt {number}",
+    "outcomes": {
+      "busted": "Bum. Du ramte en mine og tabte {amount}.",
+      "cashed": "Gevinsten taget på {multiplier}×: {amount} udbetalt.",
+      "cleared": "Hele brættet ryddet! {amount} udbetalt.",
+      "maxed": "Maks {multiplier}× nået: {amount} udbetalt.",
+      "refunded": "Du valgte aldrig et felt, så du fik dine {amount} tilbage."
+    },
+    "again": "Nyt spil",
+    "current": "Gevinst lige nu",
+    "found": "Diamanter fundet",
+    "nextLabel": "Næste diamant",
+    "riskHint": "Flere miner giver højere gevinst pr. diamant ({min}–{max})."
+  },
+  "errors": {
+    "unauthorized": "Du skal logge ind først.",
+    "notMember": "Du har ikke adgang til den server.",
+    "badRequest": "Den forespørgsel gav ikke mening. Genindlæs siden og prøv igen.",
+    "invalidAmount": "Skriv et helt antal coins.",
+    "betTooLow": "Mindste indsats er {min} coins.",
+    "betTooHigh": "Største indsats er {max} coins.",
+    "insufficient": "Det koster {stake} coins, men du har kun {balance}.",
+    "tooFast": "Tag den lidt med ro.",
+    "minesInProgress": "Du har allerede et mines-spil i gang.",
+    "minesNoGame": "Det mines-spil er slut.",
+    "minesNoPicks": "Find mindst én diamant, før du tager gevinsten.",
+    "roulettePickOne": "Vælg enten en type eller et tal, ikke begge.",
+    "badOrigin": "Forespørgslen blev blokeret. Genindlæs siden.",
+    "notFound": "Ikke fundet.",
+    "loginFailed": "Login virkede ikke. Prøv igen.",
+    "internal": "Noget gik galt hos os. Prøv igen om lidt.",
+    "network": "Kunne ikke få fat i serveren.",
+    "notAdmin": "Den side er kun for admins.",
+    "adminTooMuch": "Højst {max} coins ad gangen.",
+    "adminPickTarget": "Vælg enten en spiller eller alle.",
+    "adminBadUser": "Det ligner ikke et Discord-bruger-ID.",
+    "blackjackInProgress": "Du har allerede en blackjack-runde i gang.",
+    "blackjackNoGame": "Den blackjack-runde er slut.",
+    "pokerNoTable": "Det bord findes ikke længere.",
+    "pokerTooManyTables": "Der er allerede {max} borde på serveren.",
+    "poker": {
+      "tableClosed": "Bordet er lukket.",
+      "alreadySeated": "Du sidder allerede ved bordet.",
+      "tableFull": "Bordet er fyldt ({max} spillere).",
+      "buyInRange": "Buy-in skal være mellem {min} og {max}.",
+      "insufficient": "Du har ikke coins nok til det buy-in. Saldo: {balance}",
+      "notSeated": "Du sidder ikke ved det her bord.",
+      "alreadyStarted": "Spillet er allerede i gang.",
+      "notHost": "Kun værten kan starte spillet.",
+      "needPlayers": "I skal være mindst {min} for at starte.",
+      "noHand": "Der bliver ikke spillet en hånd lige nu.",
+      "outdated": "Bordet har ændret sig imens. Prøv igen.",
+      "notYourTurn": "Vent på din tur.",
+      "notInHand": "Du er ikke med i den her hånd.",
+      "handOver": "Hånden er allerede slut.",
+      "cannotAct": "Du kan ikke handle mere i den her hånd.",
+      "cannotCheck": "Du kan ikke checke, der er en indsats at calle.",
+      "nothingToCall": "Der er ikke noget at calle. Check i stedet.",
+      "cannotBet": "Du kan ikke bette nu.",
+      "cannotRaise": "Du kan ikke raise lige nu.",
+      "invalidAmount": "Beløbet skal være et helt tal.",
+      "notEnoughChips": "Så mange chips har du ikke.",
+      "raiseTooSmall": "Det er mindre end minimum-raiset.",
+      "unknownAction": "Ukendt handling.",
+      "invalidSettings": "De bordindstillinger giver ikke mening.",
+      "bigBlindTooSmall": "Big blind kan ikke være mindre end small blind.",
+      "minBuyInTooLow": "Minimum buy-in skal være mindst 10 big blinds ({min}).",
+      "maxBelowMin": "Maksimum buy-in kan ikke være lavere end minimum.",
+      "maxBuyInTooHigh": "Maksimum buy-in må højst være {max}."
+    }
+  },
+  "admin": {
+    "title": "Admin",
+    "server": "Server",
+    "intro": "Kun du kan se den her side. Ændringer sker med det samme og gælder både i Discord og på websitet.",
+    "players": "Spillere",
+    "coins": "Coins i omløb",
+    "amount": "Antal",
+    "add": "Tilføj",
+    "remove": "Fjern",
+    "allTitle": "Giv alle coins",
+    "allText": "Alle med en saldo på serveren får beløbet.",
+    "giveAll": "Giv alle",
+    "idTitle": "Efter Discord-ID",
+    "idText": "Til en spiller, der ikke står på listen endnu. Hvis spilleren er ny, får de startbeløbet oveni.",
+    "userIdPlaceholder": "Discord-bruger-ID",
+    "playersTitle": "Spillere",
+    "search": "Søg efter navn eller ID",
+    "columns": {
+      "player": "Spiller",
+      "balance": "Saldo",
+      "games": "Spil",
+      "net": "Resultat",
+      "adjust": "Justér"
+    },
+    "confirmRemove": "Fjern {amount} fra {name}?",
+    "confirmAll": "Giv {amount} til alle på {server}?",
+    "doneAdd": "{amount} givet til {name}. Ny saldo: {balance}.",
+    "doneRemove": "{amount} fjernet fra {name}. Ny saldo: {balance}.",
+    "doneAll": "{amount} givet til {count} spillere.",
+    "logTitle": "Seneste handlinger",
+    "logEmpty": "Ingen handlinger siden sidste genstart.",
+    "logAdd": "Gav {amount} til {name}",
+    "logRemove": "Fjernede {amount} fra {name}",
+    "logAll": "Gav {amount} til alle ({count} spillere)"
+  },
+  "blackjack": {
+    "description": "Mod dealeren med en 6-sæts sko. Samme regler som i Discord: blackjack betaler 3:2, forsikring 2:1, double på alle to kort og split op til fire hænder.",
+    "rulesMain": "BLACKJACK BETALER 3 TIL 2",
+    "rulesSub": "Dealeren står på alle 17 · Forsikring betaler 2 til 1",
+    "dealer": "Dealer",
+    "dealerShows": "Viser {value}",
+    "soft": "Soft {value}",
+    "deal": "Giv kort",
+    "placeBet": "Vælg din indsats og tryk Giv kort.",
+    "shuffled": "Skoen er blandet.",
+    "actions": {
+      "hit": "Kort",
+      "stand": "Stå",
+      "double": "Double",
+      "split": "Split"
+    },
+    "insurancePrompt": "Dealeren viser et es. Vil du købe forsikring for {amount}?",
+    "insure": "Køb forsikring",
+    "noInsurance": "Nej tak",
+    "status": {
+      "bust": "Bust",
+      "blackjack": "Blackjack!",
+      "doubled": "Doublet"
+    },
+    "outcomes": {
+      "win": "Vundet +{amount}",
+      "blackjack": "Blackjack! +{amount}",
+      "lose": "Tabt −{amount}",
+      "bust": "Bust −{amount}",
+      "push": "Push, indsatsen tilbage"
+    },
+    "dealerBlackjack": "Dealeren har blackjack.",
+    "dealerBust": "Dealeren buster med {value}.",
+    "dealerStands": "Dealeren står på {value}.",
+    "insuranceWon": "Forsikringen betalte: +{amount}.",
+    "insuranceLost": "Forsikringen tabte {amount}.",
+    "afk": "Du svarede ikke i tide, så dine hænder stod automatisk."
+  },
+  "poker": {
+    "description": "No-Limit Texas Hold'em mod andre spillere på websitet. Du køber chips for dine coins og får det hele tilbage, når du rejser dig. Websitets borde er adskilt fra bordene i Discord.",
+    "openTables": "Åbne borde",
+    "newTable": "Nyt bord",
+    "noTables": "Ingen borde lige nu. Lav et!",
+    "smallBlind": "Small blind",
+    "bigBlind": "Big blind",
+    "minBuyIn": "Min. buy-in",
+    "maxBuyIn": "Maks. buy-in",
+    "maxPlayers": "Pladser",
+    "turnTime": "Tid pr. tur (sek.)",
+    "yourBuyIn": "Dit buy-in",
+    "create": "Opret bord",
+    "sit": "Sæt dig",
+    "leave": "Rejs dig",
+    "start": "Start spillet",
+    "blinds": "Blinds {sb}/{bb}",
+    "buyInRange": "Buy-in {min}–{max}",
+    "seatsTaken": "{count}/{max} spillere",
+    "tableName": "Bord #{id} · {host}",
+    "handNumber": "Hånd #{number}",
+    "backToLobby": "Alle borde",
+    "emptySeat": "Ledig",
+    "pot": "Pot: {amount}",
+    "allIn": "All-in",
+    "leaving": "Går",
+    "waitingPlayers": "Venter på spillere ({count}/{min}).",
+    "waitingFor": "Venter på {name}...",
+    "nextHand": "Næste hånd starter om et øjeblik.",
+    "won": "{names} vinder {amount}",
+    "wonWith": "{names} vinder {amount} med {hand}",
+    "closed": "Bordet er lukket.",
+    "cashOut": "{name} fik {amount} tilbage",
+    "phases": {
+      "lobby": "Venter",
+      "playing": "I gang",
+      "between": "Mellem hænder",
+      "closed": "Lukket"
+    },
+    "streets": {
+      "preflop": "Pre-flop",
+      "flop": "Flop",
+      "turn": "Turn",
+      "river": "River"
+    },
+    "actions": {
+      "fold": "Fold",
+      "check": "Check",
+      "call": "Call {amount}",
+      "bet": "Bet",
+      "raise": "Raise",
+      "betTo": "Bet {amount}",
+      "raiseTo": "Raise til {amount}",
+      "allInFor": "All-in {amount}"
+    },
+    "presets": {
+      "min": "Min",
+      "half": "½ pot",
+      "pot": "Pot",
+      "max": "All-in"
+    },
+    "hands": {
+      "royalFlush": "Royal flush",
+      "straightFlush": "Straight flush",
+      "fourOfAKind": "Fire ens",
+      "fullHouse": "Fuldt hus",
+      "flush": "Flush",
+      "straight": "Straight",
+      "threeOfAKind": "Tre ens",
+      "twoPair": "To par",
+      "onePair": "Et par",
+      "highCard": "Højeste kort"
+    }
+  },
+  "rps": {
+    "description": "Mod huset. Vinder du, får du dobbelt igen. Uafgjort koster ingenting.",
+    "pick": "Vælg indsats og et træk.",
+    "count": "Sten... saks... papir!",
+    "you": "Dig",
+    "house": "Huset",
+    "moves": {
+      "rock": "Sten",
+      "paper": "Papir",
+      "scissors": "Saks"
+    },
+    "result": "Du valgte {yours}, huset valgte {theirs}.",
+    "tie": "Uafgjort. Du beholder din indsats.",
+    "short": {
+      "win": "V",
+      "lose": "T",
+      "tie": "U"
+    }
+  },
+  "plinko": {
+    "description": "Slip kugler ned gennem sømmene. Hvert søm er 50/50 venstre eller højre, og spanden bestemmer gevinsten. Kanterne er sjældne og betaler mest.",
+    "intro": "Vælg brættet og tryk Slip. Du kan slippe flere, mens de første falder.",
+    "rows": "Rækker",
+    "risk": "Risiko",
+    "balls": "Kugler",
+    "drop": "Slip",
+    "risks": {
+      "low": "Lav",
+      "medium": "Mellem",
+      "high": "Høj"
+    },
+    "odds": "Tilbagebetaling {rtp} % · {winChance} % af kuglerne vinder · maks {max}×",
+    "summary": "Du satsede {stake} og fik {paid} tilbage."
+  }
+}

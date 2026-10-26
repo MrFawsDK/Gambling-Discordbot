@@ -1,0 +1,700 @@
+{
+  "commandMeta": {
+    "balance": {
+      "description": "Check your coins (or someone else's)",
+      "options": {
+        "user": "Whose wallet you want to peek into"
+      }
+    },
+    "daily": {
+      "description": "Claim your daily coins"
+    },
+    "work": {
+      "description": "Do an honest(ish) job for some coins"
+    },
+    "give": {
+      "description": "Give coins to another member",
+      "options": {
+        "user": "Who gets the coins",
+        "amount": "How many coins"
+      }
+    },
+    "leaderboard": {
+      "description": "See the richest people on the server",
+      "options": {
+        "type": "Which list to show"
+      },
+      "choices": {
+        "richest": "Richest",
+        "losers": "Biggest losers (net)"
+      }
+    },
+    "coinflip": {
+      "description": "Flip a coin against the house or challenge another member",
+      "options": {
+        "bet": "How many coins you want to bet",
+        "side": "Heads or tails",
+        "opponent": "Challenge a member instead of the house",
+        "mode": "Against the house or an open challenge anyone can accept"
+      }
+    },
+    "language": {
+      "description": "Change the bot's language on this server",
+      "options": {
+        "language": "The new language"
+      }
+    },
+    "help": {
+      "description": "Show all commands"
+    },
+    "rps": {
+      "description": "Rock, paper, scissors against the bot or another member",
+      "options": {
+        "bet": "How many coins you want to bet",
+        "opponent": "Challenge a member instead of the bot",
+        "mode": "Against the bot or an open challenge anyone can accept"
+      }
+    },
+    "blackjack": {
+      "description": "Play blackjack against the dealer, alone or at a table with others",
+      "subcommands": {
+        "solo": "Play a hand of blackjack alone against the dealer",
+        "create": "Open a table up to 5 players can sit down at"
+      },
+      "options": {
+        "bet": "How many coins you want to bet"
+      }
+    },
+    "slots": {
+      "description": "Play the slot machines against the house",
+      "subcommands": {
+        "spin": "Spin the reels",
+        "paytable": "Show the machines and what they pay"
+      },
+      "options": {
+        "bet": "How many coins you want to bet per spin",
+        "machine": "Which slot machine to play (default: Classic)",
+        "spins": "How many spins to play at once (1–5, the bet counts per spin)"
+      }
+    },
+    "mines": {
+      "description": "Find the diamonds and avoid the mines, cash out whenever you want",
+      "options": {
+        "bet": "How many coins you want to bet",
+        "mines": "How many mines are hidden among the 20 tiles (2–10, default 3)"
+      }
+    },
+    "roulette": {
+      "description": "European roulette against the house: bet on a color, a group or a single number",
+      "options": {
+        "bet": "How many coins you want to bet",
+        "type": "What to bet on (pays 2× or 3×)",
+        "number": "Bet on a single number instead, 0–36 (pays 36×)"
+      }
+    },
+    "poker": {
+      "description": "Play No-Limit Texas Hold'em against other members",
+      "subcommands": {
+        "create": "Open a poker table for 2–6 players"
+      },
+      "options": {
+        "buy_in": "Your own buy-in (default: the minimum buy-in)",
+        "small_blind": "Small blind (default 10)",
+        "big_blind": "Big blind (default 2× the small blind)",
+        "min_buy_in": "Minimum buy-in (default 20 big blinds)",
+        "max_buy_in": "Maximum buy-in (default 100 big blinds)",
+        "max_players": "Seats at the table, 2–6 (default 6)",
+        "turn_timeout": "Seconds per turn before auto check/fold (default 60)"
+      }
+    },
+    "addcoins": {
+      "description": "Admin: give coins to a player",
+      "options": {
+        "user": "Who gets the coins",
+        "amount": "How many coins",
+        "everyone": "Give coins to every player on the server"
+      }
+    },
+    "removecoins": {
+      "description": "Admin: remove coins from a player",
+      "options": {
+        "user": "Who loses the coins",
+        "amount": "How many coins (takes at most what they have)"
+      }
+    },
+    "plinko": {
+      "description": "Drop balls through pegs and see where they land",
+      "options": {
+        "bet": "How many coins to bet per ball",
+        "rows": "How many rows of pegs (default: 12)",
+        "risk": "How wild it should be (default: Medium)",
+        "balls": "How many balls to drop at once (1–10, the bet is per ball)"
+      }
+    }
+  },
+  "common": {
+    "coins": "{amount} coins",
+    "heads": "Heads",
+    "tails": "Tails",
+    "footerBalance": "Balance: {balance}",
+    "languageNames": {
+      "da": "Danish",
+      "en": "English"
+    },
+    "modes": {
+      "house": "Against the house",
+      "open": "Open challenge (anyone can accept)"
+    }
+  },
+  "commands": {
+    "balance": {
+      "title": "Wallet",
+      "description": "{user} has **{balance}**",
+      "played": "Games played",
+      "won": "Games won",
+      "net": "Net profit"
+    },
+    "daily": {
+      "title": "Daily reward",
+      "claimed": "You claimed **{amount}**. Streak: **{streak}** day(s).",
+      "streakBonus": "Includes a streak bonus of {bonus}. Don't break the chain.",
+      "cooldown": "You already claimed today. Come back {time}."
+    },
+    "work": {
+      "title": "Work",
+      "jobs": [
+        "You walked a deeply angry goose and earned {amount}.",
+        "You sold a single used sock online. The buyer was weirdly happy. +{amount}",
+        "You fixed your aunt's printer. She paid you {amount} and a sandwich.",
+        "You stood in line for a stranger for 45 minutes. Pay: {amount}.",
+        "You explained Discord to your grandpa. He didn't get it, but he gave you {amount}.",
+        "You collected bottle deposits after a festival and walked away with {amount}.",
+        "You professionally tested mattresses all day. Exhausting. +{amount}",
+        "You told IT the admin password was 'password123'. They paid you {amount} to keep quiet."
+      ],
+      "cooldown": "You're exhausted. You can work again {time}."
+    },
+    "give": {
+      "title": "Transfer",
+      "success": "{from} gave **{amount}** to {to}.",
+      "self": "You can't give coins to yourself. Nice try.",
+      "bot": "Bots don't need money. They run on electricity."
+    },
+    "leaderboard": {
+      "title": "Richest on {server}",
+      "empty": "Nobody has any coins yet. Use /daily to get started.",
+      "row": "**{rank}.** {user} — {balance} · net {net}",
+      "losersTitle": "The biggest losers on {server}",
+      "losersEmpty": "Nobody is down yet. Give it time.",
+      "loserRow": "**{rank}.** {user} — net {net} · lost in total {lost}"
+    },
+    "coinflip": {
+      "flippingTitle": "Flipping...",
+      "flipping": "The coin spins through the air...",
+      "winTitle": "You won!",
+      "loseTitle": "You lost",
+      "result": "The coin landed on **{side}**.",
+      "payout": "You won **{amount}**.",
+      "loss": "You lost **{amount}**.",
+      "winLines": [
+        "The coin respects you.",
+        "Lady Luck just slid into your DMs.",
+        "Financial advisors hate this one trick.",
+        "Pure skill. Definitely not luck."
+      ],
+      "loseLines": [
+        "The coin has chosen violence.",
+        "That money is in a better place now.",
+        "Not your day. Maybe not your week either.",
+        "The house thanks you for your contribution."
+      ],
+      "challengeTitle": "Coinflip challenge",
+      "challenge": "{challenger} challenges {opponent} to a coinflip for **{amount}**!\n{challenger} picked **{side}**, so {opponent} gets **{otherSide}**.",
+      "duelResultTitle": "We have a winner!",
+      "duelResult": "The coin landed on **{side}**.\n{winner} takes **{amount}** from {loser}.",
+      "openChallengeTitle": "Open coinflip challenge",
+      "openChallenge": "{challenger} wants to flip a coin for **{amount}**!\n{challenger} picked **{side}**. Whoever accepts gets **{otherSide}**."
+    },
+    "language": {
+      "changed": "Language changed to {language}."
+    },
+    "help": {
+      "title": "Commands",
+      "economyTitle": "Economy",
+      "economy": "`/balance` — check your wallet\n`/daily` — daily coins (streaks give a bonus)\n`/work` — earn coins every hour\n`/give` — give coins to someone\n`/leaderboard` — the richest, or the biggest net losers",
+      "gamesTitle": "Games",
+      "games": "`/coinflip` — 50/50 against the house\n`/coinflip opponent:@user` — challenge a specific member\n`/coinflip mode:Open challenge` — anyone on the server can accept\n`/rps` — rock, paper, scissors against the bot (same `opponent` and `mode` options)\n`/blackjack solo bet` — blackjack alone against the dealer (Hit, Stand, Double, Split, Insurance)\n`/blackjack create` — open a table up to 5 players can join\n`/slots spin bet` — slot machines: pick Fruit, Classic or Jackpot with `machine`, and up to 5 at once with `spins` (`/slots paytable` shows the payouts)\n`/mines bet` — find diamonds on a 4×5 board and cash out before you hit a mine (`mines` sets 2–10 mines, max 25×)\n`/roulette bet type` — European roulette: red/black, even/odd, dozens or columns (`number` bets on a single number for 36×)\n`/plinko bet` — balls through pegs: `rows` 8/12/16, `risk` low/medium/high (up to 1000×), up to 10 with `balls`\n`/poker create` — No-Limit Texas Hold'em for 2–6 players with real side pots",
+      "settingsTitle": "Settings",
+      "settings": "`/language` — change the bot's language (requires Manage Server)",
+      "footer": "Everyone starts with {amount}. The coins are fake, the drama is real."
+    },
+    "rps": {
+      "moves": {
+        "rock": "Rock",
+        "paper": "Paper",
+        "scissors": "Scissors"
+      },
+      "pickTitle": "Rock, paper, scissors!",
+      "pickHouse": "Pick your move for **{amount}**. You have {seconds} seconds.",
+      "pickDuel": "{a} vs {b} for **{amount}**!\nBoth of you pick in secret. You have {seconds} seconds.",
+      "picked": "✅ {user} has picked",
+      "waiting": "⏳ {user} is thinking...",
+      "youPicked": "You picked **{move}**. Shh, it's a secret.",
+      "alreadyPicked": "You already picked. No take-backs.",
+      "houseResult": "You: **{yours}** · Bot: **{theirs}**",
+      "winTitle": "You won!",
+      "loseTitle": "You lost",
+      "tieTitle": "It's a tie",
+      "payout": "You won **{amount}**.",
+      "loss": "You lost **{amount}**.",
+      "tieRefund": "Nobody loses anything. You keep your **{amount}**.",
+      "winLines": [
+        "The bot is now questioning its whole existence.",
+        "Big brain move.",
+        "You read the bot like a book."
+      ],
+      "loseLines": [
+        "The bot saw that coming from a mile away.",
+        "Skill issue. Allegedly.",
+        "The machines are winning."
+      ],
+      "tieLines": [
+        "Great minds think alike. Sadly.",
+        "You and the bot are basically twins."
+      ],
+      "challengeTitle": "Rock, paper, scissors challenge",
+      "challenge": "{challenger} challenges {opponent} to rock, paper, scissors for **{amount}**!",
+      "openChallengeTitle": "Open rock, paper, scissors challenge",
+      "openChallenge": "{challenger} wants to play rock, paper, scissors for **{amount}**!\nAnyone brave enough can accept.",
+      "duelResultTitle": "We have a winner!",
+      "duelResult": "{a}: **{aMove}**\n{b}: **{bMove}**\n\n{winner} takes **{amount}** from {loser}.",
+      "duelTie": "{a} and {b} both picked **{move}**. Nobody wins, nobody loses. Boring.",
+      "houseTimeout": "Time's up! You didn't pick, so no coins moved.",
+      "duelTimeout": "{users} didn't pick in time. The game is cancelled and no coins moved."
+    },
+    "blackjack": {
+      "title": "Blackjack",
+      "tableTitle": "Blackjack table #{id} · Round {round}",
+      "dealer": "Dealer",
+      "hit": "Hit",
+      "stand": "Stand",
+      "double": "Double",
+      "split": "Split",
+      "join": "Join",
+      "rebet": "Same bet again",
+      "deal": "Deal",
+      "leave": "Leave",
+      "footer": "Blackjack pays 3:2 · Insurance 2:1 · Dealer stands on 17 · 6 decks · Bets {min}–{max}",
+      "lobby": "Place your bets! The cards are dealt {time}, or as soon as someone at the table presses **Deal**.",
+      "seats": "Seats ({count}/{max})",
+      "noSeats": "Nobody has sat down yet.",
+      "seatLine": "{user} — {amount}",
+      "turn": "{user}'s turn · auto-stand {time}",
+      "joinTitle": "Join the table",
+      "betLabel": "Your bet ({min}–{max})",
+      "status": {
+        "bust": "Bust",
+        "blackjack": "Blackjack!",
+        "doubled": "Doubled",
+        "stood": "Stand",
+        "afk": "*Went AFK and stood automatically.*",
+        "active": "◀ Turn",
+        "waiting": "Waiting"
+      },
+      "outcomes": {
+        "blackjack": "Blackjack! +{amount}",
+        "win": "Win +{amount}",
+        "lose": "Lose −{amount}",
+        "push": "Push, bet returned",
+        "insuranceWon": "🛡️ Insurance paid +{amount}",
+        "insuranceLost": "🛡️ Insurance lost −{amount}"
+      },
+      "dealerBlackjack": "The dealer had blackjack. Rude.",
+      "dealerBust": "The dealer busted with {dealer}!",
+      "dealerStands": "The dealer stands on {dealer}.",
+      "roundOver": "Table #{id} · Round {round} is over",
+      "closed": "The table is closed. Thanks for playing!",
+      "betsClosed": "Too late, the cards have already been dealt.",
+      "alreadySeated": "You're already at the table.",
+      "notSeated": "You're not at this table.",
+      "tableFull": "The table is full ({max} seats).",
+      "notYourTurn": "Wait for your turn.",
+      "noPreviousBet": "You didn't play last round. Press **Join** instead.",
+      "doubleInsufficient": "You don't have enough coins to double. Balance: {balance}",
+      "splitInsufficient": "You don't have enough coins to split. Balance: {balance}",
+      "winLines": [
+        "Card counting? Never heard of it.",
+        "The dealer is sweating.",
+        "Vegas is calling."
+      ],
+      "loseLines": [
+        "The dealer sends their regards.",
+        "Should've stood. Or hit. Who knows.",
+        "The house always wins. Usually."
+      ],
+      "pushLines": [
+        "Nobody wins. Nobody loses. Everybody's sad."
+      ],
+      "titles": {
+        "blackjack": "Blackjack!",
+        "win": "You won!",
+        "lose": "You lost",
+        "push": "Push"
+      },
+      "dealerShows": "Shows {value} · one hidden card",
+      "insure": "Take insurance",
+      "noInsurance": "No insurance",
+      "insurancePrompt": "The dealer shows an **ace**! Insurance costs half your bet and pays 2:1 if the dealer has blackjack. No answer counts as no {time}.",
+      "insuranceDecided": "You've already decided.",
+      "insuranceInsufficient": "You don't have enough coins for insurance. Balance: {balance}",
+      "insuranceStatus": {
+        "pending": "Insurance ({amount})? Waiting…",
+        "bought": "🛡️ Insured for {amount}",
+        "declined": "No insurance"
+      },
+      "shuffled": "🔀 The shoe has been reshuffled."
+    },
+    "slots": {
+      "spinningTitle": "{machine} is spinning...",
+      "winTitle": "You won!",
+      "pushTitle": "Money back",
+      "loseTitle": "No luck",
+      "payout": "You won **{amount}**.",
+      "push": "You got your **{amount}** back.",
+      "loss": "You lost **{amount}**.",
+      "winLines": [
+        "The machine likes you. For now.",
+        "Ding ding ding!",
+        "Someone call the newspaper.",
+        "Retirement plan: secured."
+      ],
+      "pushLines": [
+        "Nothing gained, nothing lost.",
+        "The machine shrugs.",
+        "Spin it again, you know you want to."
+      ],
+      "loseLines": [
+        "The machine says thank you.",
+        "That's how they pay for the lights in here.",
+        "So close. Well, not really.",
+        "The reels have no mercy."
+      ],
+      "paytableTitle": "Slots pay table",
+      "paytableIntro": "Payouts are your bet times the multiplier. Matching symbols count anywhere on the reels.",
+      "paytableFooter": "1× means you get your bet back. Win chance counts spins that pay more than the bet.",
+      "combo": "{count} of a kind {symbol} pays **{multiplier}×**: {amount}",
+      "summary": "{spins} spins of {bet}: you put in **{stake}** and got **{paid}** back.",
+      "insufficient": "That costs **{stake}** in total, but you only have **{balance}**.",
+      "paytablePay": "{count} of a kind: **{multiplier}×**",
+      "paytableOdds": "*{reels} reels · win chance {winChance} % · return {rtp} %*",
+      "machines": {
+        "fruit": {
+          "name": "Fruit",
+          "description": "low risk, lots of small wins"
+        },
+        "classic": {
+          "name": "Classic",
+          "description": "the old one-armed bandit"
+        },
+        "jackpot": {
+          "name": "Jackpot",
+          "description": "five reels, high risk, up to 1000×"
+        }
+      }
+    },
+    "mines": {
+      "title": "Mines",
+      "status": "Bet: **{bet}** · Mines: **{mines}** · Found: **{picks}/{safe}**",
+      "start": "Pick a tile. Every diamond raises your payout, a mine takes your bet.",
+      "current": "Cash out now: **{multiplier}×** = {amount}",
+      "next": "Next diamond: **{multiplier}×**",
+      "idle": "Cashes out by itself {time} if you don't click.",
+      "footer": "More mines means bigger jumps and more risk. Max {max}×.",
+      "cashOut": "Cash out ({amount})",
+      "notYourGame": "That's not your game. Start your own with `/mines`.",
+      "busted": "💣 You hit a mine and lost **{amount}**.",
+      "cashedOut": "You cashed out at **{multiplier}×**: {amount} paid out, **{profit}** profit.",
+      "refunded": "You never picked a tile, so you got your **{amount}** back.",
+      "titles": {
+        "busted": "Boom",
+        "cashed": "Cashed out!",
+        "cleared": "Board cleared!",
+        "refunded": "Game over",
+        "maxed": "Max win!"
+      },
+      "winLines": [
+        "Knowing when to stop is a skill.",
+        "The mines never saw you coming.",
+        "Walked out with the diamonds and all ten fingers.",
+        "Greed is good, but leaving is better."
+      ],
+      "loseLines": [
+        "That one was not a diamond.",
+        "Should've cashed out. Everyone says that.",
+        "The floor is now slightly lower.",
+        "One more tile, they said."
+      ],
+      "maxed": "That's the max of **{max}×**, so it cashed out by itself."
+    },
+    "roulette": {
+      "types": {
+        "red": "Red",
+        "black": "Black",
+        "even": "Even",
+        "odd": "Odd",
+        "low": "Low (1–18)",
+        "high": "High (19–36)",
+        "dozen1": "1st dozen (1–12)",
+        "dozen2": "2nd dozen (13–24)",
+        "dozen3": "3rd dozen (25–36)",
+        "column1": "1st column (1, 4, 7 ...)",
+        "column2": "2nd column (2, 5, 8 ...)",
+        "column3": "3rd column (3, 6, 9 ...)"
+      },
+      "straight": "Number {number}",
+      "colors": {
+        "red": "red",
+        "black": "black",
+        "green": "green"
+      },
+      "pickOne": "Pick either a `type` or a `number`, not both.",
+      "betLine": "Bet: **{amount}** on **{bet}** (pays {pays}×)",
+      "spinningTitle": "No more bets...",
+      "spinning": "The ball is rolling...",
+      "result": "The ball landed on **{number}** ({color}).",
+      "winTitle": "You won!",
+      "loseTitle": "You lost",
+      "payout": "You won **{amount}** (paid out {total}).",
+      "loss": "You lost **{amount}**.",
+      "winLines": [
+        "The wheel likes you today.",
+        "Nobody saw that coming. Especially not the house.",
+        "Let it ride? No. Take the money.",
+        "Strategy: hope. It worked."
+      ],
+      "loseLines": [
+        "The wheel giveth, mostly it taketh.",
+        "The house always wins. Well, usually.",
+        "The ball had other plans.",
+        "Next spin is definitely the one."
+      ]
+    },
+    "poker": {
+      "lobbyTitle": "🃏 Poker table #{id}",
+      "lobby": "Press **Join** to buy in. {host} starts the game when at least two players are seated. The table closes {time} if nobody starts it.",
+      "settingsTitle": "Table rules",
+      "settings": "Blinds {sb} / {bb}\nBuy-in {min}–{max}\n{seconds} seconds per turn",
+      "playersTitle": "Players ({count}/{max})",
+      "noPlayers": "Nobody has sat down yet.",
+      "seatLine": "{name}{host} — {amount}",
+      "tableTitle": "🃏 Poker table #{id} · Hand {hand}",
+      "nextHand": "The next hand starts {time}. Join or leave now.",
+      "footer": "No-Limit Hold'em · Blinds {sb}/{bb} · Buy-in {min}–{max} · No rake",
+      "turnCall": "▶ {user} to act · {amount} to call · auto-fold {time}",
+      "turnCheck": "▶ {user} to act · auto-check {time}",
+      "board": "Board",
+      "potTitle": "Pot",
+      "pot": "The pot",
+      "potOnly": "**{amount}**",
+      "mainPot": "Main pot",
+      "sidePot": "Side pot {number}",
+      "potEntry": "{name}: **{amount}** ({players})",
+      "potBets": "Current bet on this street: {amount}",
+      "potBetting": "Bets this street: {amount}",
+      "noPot": "No hand is being played right now.",
+      "previousHand": "Previous hand",
+      "previousWithHand": "{name} won {amount} with {hand}",
+      "previousFold": "{name} won {amount} (everyone else folded)",
+      "playerLine": "{marker} **{name}**{badges} — {stack} · {status}",
+      "playerWaiting": "· **{name}** — {stack} · waiting for the next hand",
+      "streets": {
+        "preflop": "Pre-flop",
+        "flop": "Flop",
+        "turn": "Turn",
+        "river": "River",
+        "complete": "Showdown"
+      },
+      "badges": {
+        "dealer": "🔘",
+        "smallBlind": "SB",
+        "bigBlind": "BB"
+      },
+      "status": {
+        "folded": "Folded",
+        "allIn": "All-in",
+        "turn": "Their turn",
+        "waiting": "Waiting",
+        "bet": "bet {amount}",
+        "leaving": "leaving after this hand"
+      },
+      "hands": {
+        "royalFlush": "Royal Flush",
+        "straightFlush": "Straight Flush",
+        "fourOfAKind": "Four of a Kind",
+        "fullHouse": "Full House",
+        "flush": "Flush",
+        "straight": "Straight",
+        "threeOfAKind": "Three of a Kind",
+        "twoPair": "Two Pair",
+        "onePair": "One Pair",
+        "highCard": "High Card"
+      },
+      "resultTitle": "Table #{id} · Hand {hand} is over",
+      "wonByFold": "Everyone else folded. **{name}** takes **{amount}** without showing.",
+      "potWon": "{pot} (**{amount}**): **{names}** wins with {hand}",
+      "potSplit": "{pot} (**{amount}**): split between **{names}** ({share} each) with {hand}",
+      "refund": "{amount} went back to {name} (nobody called it)",
+      "closedTitle": "🃏 Poker table #{id} is closed",
+      "closeReasons": {
+        "empty": "Everyone left. Thanks for playing!",
+        "idle": "Nobody started the game in time, so the table closed. Chips went back to the wallets.",
+        "aborted": "The table message was deleted, so the table closed. A hand in progress was cancelled and everyone got their chips from before it.",
+        "restart": "The bot restarted, so this table closed. A hand in progress was cancelled and everyone got their chips from before it.",
+        "test": "Closed."
+      },
+      "cashOutLine": "{name} — cashed out {amount} ({profit})",
+      "buttons": {
+        "join": "Join",
+        "start": "Start game",
+        "leave": "Leave",
+        "players": "Players",
+        "fold": "Fold",
+        "check": "Check",
+        "call": "Call {amount}",
+        "bet": "Bet",
+        "raise": "Raise",
+        "allIn": "All-in ({amount})",
+        "cards": "My cards",
+        "pot": "Pot",
+        "table": "Table"
+      },
+      "cardsTitle": "Your cards · table #{id}",
+      "yourCards": "Your hand: {cards}",
+      "bestHand": "Best hand right now: **{hand}** {cards}",
+      "privateCall": "**Your turn.** {amount} to call.",
+      "privateCheck": "**Your turn.** You can check.",
+      "notInHandInfo": "You're not in this hand. You'll get cards from the next one if you're seated.",
+      "playersEntry": "Seat {seat}: {user}{host} — {amount}",
+      "joinTitle": "Buy in",
+      "buyInLabel": "Chips to bring ({min}–{max})",
+      "betTitle": "Bet",
+      "raiseTitle": "Raise",
+      "raiseLabel": "Total bet ({min}–{max})",
+      "joined": "You bought in for **{amount}**. Wallet: {balance}",
+      "left": "You left the table and cashed out **{amount}**. Wallet: {balance}",
+      "leavingAfterHand": "You'll leave after this hand. Your chips stay in play until then, and you'll check or fold automatically.",
+      "done": {
+        "fold": "You folded.",
+        "check": "You checked.",
+        "call": "You called {amount}.",
+        "bet": "You bet {amount}.",
+        "raise": "You raised to {amount}.",
+        "allIn": "You went all-in ({amount})."
+      },
+      "errors": {
+        "tableGone": "This table doesn't exist anymore.",
+        "tableClosed": "This table is closed.",
+        "alreadySeated": "You're already at this table.",
+        "tableFull": "The table is full ({max} players).",
+        "buyInRange": "The buy-in must be between {min} and {max}.",
+        "insufficient": "You don't have enough coins for that buy-in. Wallet: {balance}",
+        "notSeated": "You're not at this table.",
+        "alreadyStarted": "The game has already started.",
+        "notHost": "Only the host can start the game.",
+        "needPlayers": "You need at least {min} players to start.",
+        "noHand": "No hand is being played right now.",
+        "outdated": "That button is outdated. Use the latest table message.",
+        "notYourTurn": "Wait for your turn.",
+        "notInHand": "You're not in this hand.",
+        "handOver": "This hand is already over.",
+        "cannotAct": "You can't act anymore this hand.",
+        "cannotCheck": "You can't check, there's a bet to call.",
+        "nothingToCall": "There's nothing to call. Check instead.",
+        "cannotBet": "You can't bet now.",
+        "cannotRaise": "You can't raise right now.",
+        "invalidAmount": "The amount must be a whole number.",
+        "notEnoughChips": "You don't have that many chips.",
+        "raiseTooSmall": "That's less than the minimum raise.",
+        "raiseRange": "The total bet must be between {min} and {max} (or all-in).",
+        "unknownAction": "Unknown action.",
+        "invalidSettings": "Those table settings aren't valid.",
+        "bigBlindTooSmall": "The big blind can't be smaller than the small blind.",
+        "minBuyInTooLow": "The minimum buy-in must be at least 10 big blinds ({min}).",
+        "maxBelowMin": "The maximum buy-in can't be lower than the minimum.",
+        "maxBuyInTooHigh": "The maximum buy-in can't be more than {max}."
+      }
+    },
+    "addcoins": {
+      "title": "Coins added",
+      "success": "{to} received **{amount}** from the bank.",
+      "balance": "New balance: {balance}",
+      "bot": "Bots don't need money. They run on electricity.",
+      "successAll": "**{count}** players each received **{amount}** from the bank.",
+      "pickTarget": "Pick either a player or everyone."
+    },
+    "removecoins": {
+      "title": "Coins removed",
+      "success": "**{amount}** was taken from {from} and returned to the bank.",
+      "partial": "{from} only had **{amount}**, so that's all that was taken (you asked for {requested}).",
+      "empty": "{user} doesn't have any coins to remove."
+    },
+    "plinko": {
+      "droppingTitle": "The balls are falling...",
+      "winTitle": "Plinko paid out!",
+      "pushTitle": "Money back",
+      "loseTitle": "Down the middle",
+      "risks": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      },
+      "rowChoices": {
+        "r8": "8 rows",
+        "r12": "12 rows",
+        "r16": "16 rows"
+      },
+      "boardInfo": "{rows} rows · {risk} risk · {rtp} % return",
+      "ball": "Ball {number}: bucket {bucket} · **{multiplier}×** = {amount}",
+      "summary": "{balls} balls at {bet}: you bet **{stake}** and got **{paid}** back.",
+      "payout": "You won **{amount}**.",
+      "push": "You got your **{amount}** back.",
+      "loss": "You lost **{amount}**.",
+      "insufficient": "That costs **{stake}** in total, but you only have **{balance}**.",
+      "multipliers": "The buckets, left to right"
+    }
+  },
+  "challenge": {
+    "footer": "The challenge expires in {seconds} seconds",
+    "accept": "Accept",
+    "decline": "Decline",
+    "cancel": "Cancel",
+    "declined": "{user} chickened out. Challenge cancelled.",
+    "cancelled": "{user} withdrew the challenge.",
+    "expired": "Nobody answered. The challenge expired.",
+    "openExpired": "Nobody dared to take the challenge. Cowards.",
+    "notYours": "This challenge isn't for you.",
+    "ownChallenge": "You can't accept your own challenge. Wait for someone brave.",
+    "acceptInsufficient": "You don't have enough coins to accept. Balance: {balance}",
+    "selfChallenge": "You can't challenge yourself. Who would you even celebrate with?",
+    "botChallenge": "Bots don't gamble. They know the odds.",
+    "opponentInsufficient": "{user} doesn't have enough coins for that bet.",
+    "duelInsufficient": "Someone ran out of coins before the flip. Challenge cancelled."
+  },
+  "errors": {
+    "generic": "Something went wrong. Try again in a moment.",
+    "guildOnly": "This command only works in a server.",
+    "missingPermission": "You don't have permission to use that command.",
+    "insufficient": "You don't have enough coins. Balance: {balance}",
+    "cooldown": "Slow down! You can use this again {time}.",
+    "betTooLow": "The minimum bet is {min}.",
+    "betTooHigh": "The maximum bet is {max}.",
+    "invalidAmount": "The amount must be a positive whole number."
+  },
+  "phraseRewards": {
+    "claimedLines": [
+      "**{phrases}**? That's so brainrot you get {amount}. Only once, so enjoy it.",
+      "Brainrot detected: **{phrases}**. Here's {amount}, but you won't get it again.",
+      "**{phrases}**. I feel bad about this, but here's {amount}. Once."
+    ]
+  }
+}

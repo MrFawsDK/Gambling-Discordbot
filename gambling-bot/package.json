@@ -1,0 +1,19 @@
+{
+  "name": "gambling-bot",
+  "version": "0.13.0",
+  "description": "Discord gambling bot with fake coins, minigames and PvP (da/en)",
+  "type": "module",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env src/index.js",
+    "deploy": "node --env-file-if-exists=.env src/deploy-commands.js",
+    "check:locales": "node scripts/check-locales.js",
+    "test": "node --test 'test/**/*.test.js'"
+  },
+  "dependencies": {
+    "discord.js": "^14.27.0"
+  }
+}

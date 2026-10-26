@@ -1,0 +1,12 @@
+node_modules/
+.env
+.env.*
+!.env.example
+data/
+*.db
+*.db-wal
+*.db-shm
+*.db.bak-*
+
+# Personal notes, not part of the project
+gambling-bot/docs/
