@@ -221,7 +221,7 @@
     "help": {
       "title": "Kommandoer",
       "economyTitle": "Økonomi",
-      "economy": "`/balance` — se din pung\n`/daily` — daglige coins (streaks giver bonus)\n`/work` — tjen coins hver time\n`/give` — giv coins til nogen\n`/leaderboard` — de rigeste, eller de største tabere i netto",
+      "economy": "`/balance` — se din pung\n`/daily` — daglige coins (streaks giver bonus)\n`/work` — tjen coins hver halve time\n`/give` — giv coins til nogen\n`/leaderboard` — de rigeste, eller de største tabere i netto",
       "gamesTitle": "Spil",
       "games": "`/coinflip` — 50/50 mod huset\n`/coinflip opponent:@bruger` — udfordr et bestemt medlem\n`/coinflip mode:Åben udfordring` — alle på serveren kan tage imod\n`/rps` — sten, saks, papir mod botten (samme `opponent`- og `mode`-options)\n`/blackjack solo bet` — blackjack alene mod dealeren (Træk, Stå, Doble, Split, Forsikring)\n`/blackjack create` — opret et bord hvor op til 5 kan spille med\n`/slots spin bet` — enarmede tyveknægte: vælg Frugt, Klassisk eller Jackpot med `machine` og op til 5 ad gangen med `spins` (`/slots paytable` viser gevinsterne)\n`/mines bet` — find diamanter på et 4×5-bræt og tag gevinsten, før du rammer en mine (`mines` vælger 2–10 miner, maks 25×)\n`/roulette bet type` — europæisk roulette: rød/sort, lige/ulige, dusiner eller kolonner (`number` satser på et enkelt tal til 36×)\n`/plinko bet` — kugler gennem søm: `rows` 8/12/16, `risk` lav/mellem/høj (op til 1000×), op til 10 med `balls`\n`/poker create` — No-Limit Texas Hold'em for 2–6 spillere med rigtige side pots",
       "settingsTitle": "Indstillinger",

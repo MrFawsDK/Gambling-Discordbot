@@ -29,7 +29,7 @@ export const config = {
     dailyCooldownMs: 24 * HOUR,
     workMin: 50,
     workMax: 250,
-    workCooldownMs: HOUR,
+    workCooldownMs: 30 * MINUTE,
     // Paid once per brainrot phrase written in chat (see services/phraseRewards.js).
     phraseReward: 670,
   },

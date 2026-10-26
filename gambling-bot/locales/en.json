@@ -221,7 +221,7 @@
     "help": {
       "title": "Commands",
       "economyTitle": "Economy",
-      "economy": "`/balance` — check your wallet\n`/daily` — daily coins (streaks give a bonus)\n`/work` — earn coins every hour\n`/give` — give coins to someone\n`/leaderboard` — the richest, or the biggest net losers",
+      "economy": "`/balance` — check your wallet\n`/daily` — daily coins (streaks give a bonus)\n`/work` — earn coins every 30 minutes\n`/give` — give coins to someone\n`/leaderboard` — the richest, or the biggest net losers",
       "gamesTitle": "Games",
       "games": "`/coinflip` — 50/50 against the house\n`/coinflip opponent:@user` — challenge a specific member\n`/coinflip mode:Open challenge` — anyone on the server can accept\n`/rps` — rock, paper, scissors against the bot (same `opponent` and `mode` options)\n`/blackjack solo bet` — blackjack alone against the dealer (Hit, Stand, Double, Split, Insurance)\n`/blackjack create` — open a table up to 5 players can join\n`/slots spin bet` — slot machines: pick Fruit, Classic or Jackpot with `machine`, and up to 5 at once with `spins` (`/slots paytable` shows the payouts)\n`/mines bet` — find diamonds on a 4×5 board and cash out before you hit a mine (`mines` sets 2–10 mines, max 25×)\n`/roulette bet type` — European roulette: red/black, even/odd, dozens or columns (`number` bets on a single number for 36×)\n`/plinko bet` — balls through pegs: `rows` 8/12/16, `risk` low/medium/high (up to 1000×), up to 10 with `balls`\n`/poker create` — No-Limit Texas Hold'em for 2–6 players with real side pots",
       "settingsTitle": "Settings",

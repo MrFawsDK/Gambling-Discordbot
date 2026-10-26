@@ -6,7 +6,7 @@ A Discord bot with a fake coin economy and minigames you can play against the ho
 
 ## Features
 
-- **Economy:** balance per server, daily reward with streak bonus, hourly `/work` with silly jobs, transfers between members, leaderboard, and a one-time 670 coins for each brainrot phrase you write in chat (`10x67`, `6 7`, `skibidi`, `rizz`, `fanum tax`, `tung tung tung sahur` and more, see `src/services/phraseRewards.js`)
+- **Economy:** balance per server, daily reward with streak bonus, `/work` every 30 minutes with silly jobs, transfers between members, leaderboard, and a one-time 670 coins for each brainrot phrase you write in chat (`10x67`, `6 7`, `skibidi`, `rizz`, `fanum tax`, `tung tung tung sahur` and more, see `src/services/phraseRewards.js`)
 - **Coinflip:** play solo against the house, challenge a specific member, or post an open challenge anyone on the server can accept
 - **Rock, paper, scissors:** against the bot, or PvP where both players pick in secret (same `opponent`/`mode` options as coinflip)
 - **Blackjack:** against the dealer with Hit, Stand, Double, Split and Insurance, alone or at a table with up to 5 players sharing a 6-deck shoe. Blackjack pays 3:2, insurance 2:1, and the dealer stands on 17. The dealer doesn't peek, so you play your hand even against a dealer blackjack and push if you draw to 21
@@ -74,7 +74,7 @@ Other tuning values (starting balance, daily amount, cooldowns, minimum bet) liv
 | --- | --- |
 | `/balance [user]` | Wallet and game stats (only visible to you) |
 | `/daily` | Daily coins, +50 per streak day (max +500) |
-| `/work` | 50–250 coins, once per hour |
+| `/work` | 50–250 coins, once every 30 minutes |
 | `/give <user> <amount>` | Give coins to someone |
 | `/leaderboard [type]` | Top 10 on the server: richest (default) or biggest net losers |
 | `/coinflip <bet> <side>` | 50/50 against the house |
@@ -111,7 +111,7 @@ Alle starter med **1.000 coins**. Dine coins er falske, dramaet er ægte.
 **Økonomi**
 `/balance` — se din pung og statistik (kun synlig for dig)
 `/daily` — hent daglige coins (streaks giver bonus)
-`/work` — tjen coins én gang i timen
+`/work` — tjen coins hver halve time
 `/give @bruger beløb` — giv coins til nogen
 `/leaderboard` — de rigeste på serveren, eller de største tabere i netto
 
@@ -165,7 +165,7 @@ Everyone starts with **1,000 coins**. The coins are fake, the drama is real.
 **Economy**
 `/balance` — check your wallet and stats (only visible to you)
 `/daily` — claim daily coins (streaks give a bonus)
-`/work` — earn coins once per hour
+`/work` — earn coins every 30 minutes
 `/give @user amount` — give coins to someone
 `/leaderboard` — the richest on the server, or the biggest net losers
 

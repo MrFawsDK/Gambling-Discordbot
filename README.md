@@ -14,7 +14,7 @@ Each folder has its own README with every detail. This page is the overview.
 ## Features
 
 **Economy**
-- Balance per server, `/daily` with streak bonus, hourly `/work`, `/give` between members
+- Balance per server, `/daily` with streak bonus, `/work` every 30 minutes, `/give` between members
 - `/leaderboard`: the richest, or the biggest net losers
 - `/balance` with games played, games won and net result
 - Brainrot easter eggs: writing `10x67`, `6 7`, `skibidi`, `rizz`, `fanum tax`, `tung tung tung sahur` and a few more in chat pays 670 coins once per phrase, told to you by DM
