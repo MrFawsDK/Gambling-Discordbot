@@ -115,7 +115,3 @@ Running without Docker works too. See the systemd examples in each folder's READ
 - Users only see friendly error messages. Details stay in the server log.
 
 Details are in [`gambling-website-bot/README.md`](gambling-website-bot/README.md#security).
-
-## Changelog
-
-What changed in each version, why, and how it was tested is in [`gambling-bot/WRITEUP.md`](gambling-bot/WRITEUP.md) and [`gambling-website-bot/WRITEUP.md`](gambling-website-bot/WRITEUP.md).
