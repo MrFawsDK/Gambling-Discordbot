@@ -22,6 +22,14 @@ export function t(key, params = {}) {
   return value.replace(/\{(\w+)\}/g, (match, name) => (name in params ? String(params[name]) : match));
 }
 
+// One of the texts under `key` at random, like the bot's tRandom (e.g. the /work jobs).
+export function tRandom(key, params = {}) {
+  const options = lookup(key);
+  const keys = options && typeof options === 'object' ? Object.keys(options) : [];
+  if (keys.length === 0) return t(key, params);
+  return t(`${key}.${keys[Math.floor(Math.random() * keys.length)]}`, params);
+}
+
 export function num(value, options) {
   return new Intl.NumberFormat('da-DK', options).format(value);
 }

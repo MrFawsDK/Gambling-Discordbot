@@ -125,8 +125,17 @@ export function gameMeta(botConfig) {
       ];
     }),
   );
+  const economy = botConfig.economy;
   return {
-    startingBalance: botConfig.economy.startingBalance,
+    startingBalance: economy.startingBalance,
+    rewards: {
+      dailyBase: economy.dailyBase,
+      dailyStreakBonus: economy.dailyStreakBonus,
+      dailyMaxStreakBonusDays: economy.dailyMaxStreakBonusDays,
+      workMin: economy.workMin,
+      workMax: economy.workMax,
+      workCooldownMs: economy.workCooldownMs,
+    },
     minBet: botConfig.games.minBet,
     maxBet: botConfig.games.maxBet,
     coinflip: { sides: coinflip.SIDES },

@@ -14,6 +14,7 @@ A website for the [gambling bot](../gambling-bot): statistics about what people 
   - Leaderboards for richest, most profit and most games
   - Latest games and biggest wins, marked as played in Discord or on the website
 - **My stats:** your balance, win rate, net result, per game and your latest games.
+- **Rewards:** claim `/daily` and `/work` from the "My stats" page. Same amounts, streak and cooldowns as the bot (`Economy.claimDaily/work`), and the cooldowns are shared, so claiming in Discord counts on the website and the other way round.
 - **Games:** blackjack, poker (Texas Hold'em), roulette, slots (all three machines, up to 5 spins), mines, coinflip and rock-paper-scissors. Same rules and odds as the bot, because the website runs the bot's own game code.
   - Blackjack is the bot's `BlackjackTable` played solo against the dealer: 6-deck shoe kept between rounds, insurance, double, split up to four hands, the same timers.
   - Poker tables are the bot's `PokerRoom` + `PokerStore`, so they use the same tables in the database, tagged `source = 'web'`. They're separate from the tables in Discord. The browser polls the table about once a second.

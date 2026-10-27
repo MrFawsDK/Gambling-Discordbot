@@ -95,6 +95,38 @@
     "recentTitle": "Dine seneste spil",
     "perGameTitle": "Pr. spil"
   },
+  "rewards": {
+    "title": "Belønninger",
+    "intro": "Det samme som /daily og /work i Discord. Ventetiden er fælles, så har du hentet i Discord, skal du også vente her.",
+    "dailyTitle": "Daglig belønning",
+    "dailyText": "{base} om dagen plus {bonus} for hver dag i træk, op til {days} dage.",
+    "dailyButton": "Hent daglig belønning",
+    "dailyClaimed": "Du hentede {amount}. Streak: {streak} dag(e).",
+    "streakBonus": "Inklusiv en streak-bonus på {bonus}.",
+    "dailyCooldown": "Du har allerede hentet i dag. Kom tilbage om {time}.",
+    "streak": "Nuværende streak: {streak} dag(e)",
+    "workTitle": "Arbejde",
+    "workText": "Tjen {min}–{max} coins. Du kan arbejde igen efter {time}.",
+    "workButton": "Arbejd",
+    "workCooldown": "Du er helt smadret. Du kan arbejde igen om {time}.",
+    "readyIn": "Klar om {time}",
+    "jobs": {
+      "1": "Du luftede en ekstremt sur gås og tjente {amount}.",
+      "2": "Du solgte en enkelt brugt sok på DBA. Køberen var underligt glad. +{amount}",
+      "3": "Du fiksede din mosters printer. Hun gav dig {amount} og en rugbrødsmad.",
+      "4": "Du stod i kø for en fremmed i Netto i 45 minutter. Løn: {amount}.",
+      "5": "Du forklarede din morfar, hvad Discord er. Han fattede det ikke, men gav dig {amount}.",
+      "6": "Du samlede pantflasker efter Roskilde Festival og gik hjem med {amount}.",
+      "7": "Du testede madrasser i JYSK hele dagen. Hårdt arbejde. +{amount}",
+      "8": "Du fortalte IT, at admin-koden var 'password123'. De gav dig {amount} for at holde mund."
+    },
+    "duration": {
+      "hours": "{h} t {m} min",
+      "minutes": "{m} min {s} sek",
+      "wholeMinutes": "{m} min",
+      "seconds": "{s} sek"
+    }
+  },
   "play": {
     "title": "Spil",
     "intro": "Samme coins og samme odds som i Discord. Alt afgøres på serveren.",

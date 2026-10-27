@@ -90,6 +90,19 @@ export function createApp({ config, botConfig, economy, profiles, stats, session
     if (!actionLimiter.hit(player.userId)) throw new HttpError(429, 'tooFast');
   }
 
+  // When /daily and /work can be used again. The cooldowns live in the users table, so they
+  // are shared with Discord. `now` lets the browser count down even if its clock is off.
+  function rewardStatus(guildId, userId) {
+    const user = economy.getUser(guildId, userId);
+    const { dailyCooldownMs, workCooldownMs } = botConfig.economy;
+    return {
+      now: Date.now(),
+      dailyAt: user.last_daily === null ? 0 : user.last_daily + dailyCooldownMs,
+      workAt: user.last_work === null ? 0 : user.last_work + workCooldownMs,
+      streak: user.daily_streak,
+    };
+  }
+
   // --- Auth ------------------------------------------------------------------------
 
   router.get('/auth/login', (req, res) => {
@@ -154,6 +167,7 @@ export function createApp({ config, botConfig, economy, profiles, stats, session
       ...stats.player(guildId, userId),
       mines: minesManager.current(guildId, userId),
       blackjack: blackjack.current(guildId, userId),
+      rewards: rewardStatus(guildId, userId),
     });
   });
 
@@ -180,6 +194,18 @@ export function createApp({ config, botConfig, economy, profiles, stats, session
   gameRoute('blackjack/start', (player, body) => blackjack.start(player.guildId, player.userId, player.user.name, body));
   gameRoute('blackjack/insurance', (player, body) => blackjack.insurance(player.guildId, player.userId, body));
   gameRoute('blackjack/action', (player, body) => blackjack.act(player.guildId, player.userId, body));
+
+  // --- Rewards ---------------------------------------------------------------------
+
+  // The bot's own /daily and /work. A claim on cooldown isn't an error, just `ok: false`.
+  gameRoute('daily', (player) => ({
+    ...economy.claimDaily(player.guildId, player.userId),
+    rewards: rewardStatus(player.guildId, player.userId),
+  }));
+  gameRoute('work', (player) => ({
+    ...economy.work(player.guildId, player.userId),
+    rewards: rewardStatus(player.guildId, player.userId),
+  }));
 
   // --- Poker -----------------------------------------------------------------------
 
