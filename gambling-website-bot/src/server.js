@@ -5,6 +5,7 @@ import { Economy, PokerStore, Profiles, botConfig, openDatabase } from './bot.js
 import { BlackjackManager } from './games/blackjackManager.js';
 import { WebPoker } from './games/webPoker.js';
 import { config, requireEnv } from './config.js';
+import { CrashManager } from './games/crashManager.js';
 import { MinesManager } from './games/minesManager.js';
 import { Stats } from './services/stats.js';
 
@@ -18,6 +19,7 @@ const refunded = economy.refundOpenBets();
 if (refunded > 0) console.log(`Refunded ${refunded} website bet(s) from games interrupted by the last shutdown.`);
 
 const minesManager = new MinesManager(economy, botConfig.games, { idleMs: config.minesIdleMs });
+const crashManager = new CrashManager(economy, botConfig.games);
 const blackjack = new BlackjackManager(economy, botConfig.games, { turnMs: config.blackjackTurnMs, insuranceMs: config.blackjackInsuranceMs });
 const poker = new WebPoker({ store: new PokerStore(db, economy), maxBet: botConfig.games.maxBet });
 const recovered = poker.recover();
@@ -31,6 +33,7 @@ const server = createApp({
   sessions: new SessionStore({ ttlMs: config.sessionTtlMs }),
   auth: createDiscordAuth(config.discord),
   minesManager,
+  crashManager,
   blackjack,
   poker,
 });
@@ -39,10 +42,11 @@ server.listen(config.port, () => {
   console.log(`Website running on ${config.baseUrl} (database: ${config.databasePath})`);
 });
 
-// Settle running mines games before exiting, so nobody waits for a refund on the next start.
+// Settle running mines and crash games before exiting, so nobody waits for a refund on the next start.
 function shutdown() {
   console.log('Shutting down...');
   minesManager.finishAll();
+  crashManager.finishAll();
   blackjack.finishAll();
   poker.closeAll();
   server.close(() => {

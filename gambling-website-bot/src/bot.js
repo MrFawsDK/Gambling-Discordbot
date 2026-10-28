@@ -10,6 +10,7 @@ export * as coinflip from '../../gambling-bot/src/games/coinflip.js';
 export * as slots from '../../gambling-bot/src/games/slots.js';
 export * as roulette from '../../gambling-bot/src/games/roulette.js';
 export * as mines from '../../gambling-bot/src/games/mines.js';
+export * as crash from '../../gambling-bot/src/games/crash.js';
 export * as plinko from '../../gambling-bot/src/games/plinko.js';
 export * as rps from '../../gambling-bot/src/games/rps.js';
 export { Shoe, cardValue, handValue, isBlackjack, isBust } from '../../gambling-bot/src/games/blackjack.js';

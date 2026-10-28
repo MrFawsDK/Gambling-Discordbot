@@ -25,6 +25,7 @@ Each folder has its own README with every detail. This page is the overview.
 - **Slots:** three machines (Fruit, Classic, five-reel Jackpot), up to 5 spins at once
 - **Roulette:** colours, even/odd, low/high, dozens, columns and single numbers
 - **Mines:** 4×5 board, 2–10 mines, cash out any time
+- **Crash:** the multiplier climbs until it crashes, cash out in time or set an auto cash out, max 100×
 - **Plinko:** 8/12/16 rows, three risk levels, up to 10 balls
 - **Coinflip** and **rock, paper, scissors:** against the house, against a specific member, or as an open challenge
 

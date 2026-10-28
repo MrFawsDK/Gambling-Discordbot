@@ -84,6 +84,13 @@
         "mines": "Hvor mange miner der gemmer sig blandt de 20 felter (2–10, standard 3)"
       }
     },
+    "crash": {
+      "description": "Se multiplieren stige og hæv, før den crasher",
+      "options": {
+        "bet": "Hvor mange coins du vil satse",
+        "auto_cashout": "Hæv automatisk ved denne multiplier, fx 2 (1,01–100)"
+      }
+    },
     "roulette": {
       "description": "Europæisk roulette mod huset: sats på en farve, en gruppe eller et enkelt tal",
       "options": {
@@ -223,7 +230,7 @@
       "economyTitle": "Økonomi",
       "economy": "`/balance` — se din pung\n`/daily` — daglige coins (streaks giver bonus)\n`/work` — tjen coins hver halve time\n`/give` — giv coins til nogen\n`/leaderboard` — de rigeste, eller de største tabere i netto",
       "gamesTitle": "Spil",
-      "games": "`/coinflip` — 50/50 mod huset\n`/coinflip opponent:@bruger` — udfordr et bestemt medlem\n`/coinflip mode:Åben udfordring` — alle på serveren kan tage imod\n`/rps` — sten, saks, papir mod botten (samme `opponent`- og `mode`-options)\n`/blackjack solo bet` — blackjack alene mod dealeren (Træk, Stå, Doble, Split, Forsikring)\n`/blackjack create` — opret et bord hvor op til 5 kan spille med\n`/slots spin bet` — enarmede tyveknægte: vælg Frugt, Klassisk eller Jackpot med `machine` og op til 5 ad gangen med `spins` (`/slots paytable` viser gevinsterne)\n`/mines bet` — find diamanter på et 4×5-bræt og tag gevinsten, før du rammer en mine (`mines` vælger 2–10 miner, maks 25×)\n`/roulette bet type` — europæisk roulette: rød/sort, lige/ulige, dusiner eller kolonner (`number` satser på et enkelt tal til 36×)\n`/plinko bet` — kugler gennem søm: `rows` 8/12/16, `risk` lav/mellem/høj (op til 1000×), op til 10 med `balls`\n`/poker create` — No-Limit Texas Hold'em for 2–6 spillere med rigtige side pots",
+      "games": "`/coinflip` — 50/50 mod huset\n`/coinflip opponent:@bruger` — udfordr et bestemt medlem\n`/coinflip mode:Åben udfordring` — alle på serveren kan tage imod\n`/rps` — sten, saks, papir mod botten (samme `opponent`- og `mode`-options)\n`/blackjack solo bet` — blackjack alene mod dealeren (Træk, Stå, Doble, Split, Forsikring)\n`/blackjack create` — opret et bord hvor op til 5 kan spille med\n`/slots spin bet` — enarmede tyveknægte: vælg Frugt, Klassisk eller Jackpot med `machine` og op til 5 ad gangen med `spins` (`/slots paytable` viser gevinsterne)\n`/mines bet` — find diamanter på et 4×5-bræt og tag gevinsten, før du rammer en mine (`mines` vælger 2–10 miner, maks 25×)\n`/crash bet` — multiplieren stiger, til den crasher: hæv i tide (`auto_cashout` hæver af sig selv, maks 100×)\n`/roulette bet type` — europæisk roulette: rød/sort, lige/ulige, dusiner eller kolonner (`number` satser på et enkelt tal til 36×)\n`/plinko bet` — kugler gennem søm: `rows` 8/12/16, `risk` lav/mellem/høj (op til 1000×), op til 10 med `balls`\n`/poker create` — No-Limit Texas Hold'em for 2–6 spillere med rigtige side pots",
       "settingsTitle": "Indstillinger",
       "settings": "`/language` — skift botens sprog (kræver Administrer server)",
       "footer": "Alle starter med {amount}. Dine coins er falske, dramaet er ægte."
@@ -435,6 +442,38 @@
         "Bare ét felt mere, sagde de."
       ],
       "maxed": "Det er maks på **{max}×**, så gevinsten blev taget automatisk."
+    },
+    "crash": {
+      "title": "Crash",
+      "status": "Indsats: **{bet}**",
+      "statusAuto": "Indsats: **{bet}** · Auto-hæv: **{target}×**",
+      "rising": "📈 **{multiplier}×**",
+      "current": "Hæv nu: {amount}",
+      "footer": "Opdateres hvert andet sekund. Det er serverens ur, der tæller, når du trykker. Maks {max}×.",
+      "cashOut": "Hæv ({amount})",
+      "notYourGame": "Det er ikke din runde. Start din egen med `/crash`.",
+      "invalidAuto": "Auto-hæv skal være mellem {min}× og {max}× med højst to decimaler.",
+      "busted": "💥 Crashede ved **{multiplier}×**. Du tabte **{amount}**.",
+      "cashedOut": "Du hævede ved **{multiplier}×**: {amount} udbetalt, **{profit}** i gevinst.",
+      "crashedAt": "Den crashede ved **{multiplier}×**.",
+      "maxed": "Det er maks på **{max}×**, så den hævede af sig selv.",
+      "titles": {
+        "busted": "Crash!",
+        "cashed": "Hævet!",
+        "maxed": "Maks gevinst!"
+      },
+      "winLines": [
+        "Ud i tide. Det er hele kunsten.",
+        "Grafen gik videre uden dig, og det er helt fint.",
+        "Kold hånd, varme coins.",
+        "Bedre en sikker gevinst end en god historie."
+      ],
+      "loseLines": [
+        "Lige én tick mere, tænkte du.",
+        "Raketten havde andre planer.",
+        "Grådighed er en dårlig pilot.",
+        "Det gik op, og så gik det ned."
+      ]
     },
     "roulette": {
       "types": {

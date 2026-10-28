@@ -12,6 +12,7 @@ A Discord bot with a fake coin economy and minigames you can play against the ho
 - **Blackjack:** against the dealer with Hit, Stand, Double, Split and Insurance, alone or at a table with up to 5 players sharing a 6-deck shoe. Blackjack pays 3:2, insurance 2:1, and the dealer stands on 17. The dealer doesn't peek, so you play your hand even against a dealer blackjack and push if you draw to 21
 - **Slots:** three machines against the house (Fruit, Classic and five-reel Jackpot) with different risk, up to 5 spins at once
 - **Mines:** find diamonds on a 4×5 board, cash out whenever you want, lose everything on a mine. 2–10 mines, max 25×, about 95 % return
+- **Crash:** a multiplier climbs from 1× until it crashes at a random point. Cash out in time or set an auto cash out. Max 100×, about 95 % return
 - **Roulette:** European single-zero roulette: colors, even/odd, high/low, dozens, columns or a single number
 - **Poker:** multiplayer No-Limit Texas Hold'em for 2–6 players against each other (not the house), with side pots, private hole cards and no rake. See [Poker](#poker)
 - **Auto cleanup:** public bot messages are deleted after 1 hour (configurable); `/balance` and `/help` are private
@@ -88,6 +89,7 @@ Other tuning values (starting balance, daily amount, cooldowns, minimum bet) liv
 | `/slots spin <bet> [machine] [spins]` | Spin a slot machine (default Classic). `spins` plays 1–5 at once, the bet counts per spin. See [Slots](#slots) |
 | `/slots paytable [machine]` | What each machine pays and its odds (only visible to you) |
 | `/mines <bet> [mines]` | Mines on a 4×5 board with 2–10 mines (default 3), max 25×. See [Mines](#mines) |
+| `/crash <bet> [auto_cashout]` | Crash: cash out before the multiplier crashes, or let `auto_cashout` (1.01–100) do it. See [Crash](#crash) |
 | `/roulette <bet> type:<bet>` | Roulette on red/black, even/odd, low/high, a dozen or a column (2× or 3×) |
 | `/roulette <bet> number:<0–36>` | Roulette on a single number (36×). See [Roulette](#roulette) |
 | `/plinko <bet> [rows] [risk] [balls]` | Plinko: 8/12/16 rows (default 12), low/medium/high risk (default medium), 1–10 balls. About 99 % return, up to 1000× |
@@ -135,6 +137,9 @@ Alle starter med **1.000 coins**. Dine coins er falske, dramaet er ægte.
 
 **Mines**
 `/mines bet` — find diamanter og tag gevinsten, før du rammer en mine. `mines` vælger 2–10 miner, maks 25×
+
+**Crash**
+`/crash bet` — multiplieren stiger, indtil den crasher. Hæv i tide, eller lad `auto_cashout` gøre det for dig. Maks 100×
 
 **Roulette**
 `/roulette bet type` — rød/sort, lige/ulige, lav/høj, dusin eller kolonne
@@ -190,6 +195,9 @@ Everyone starts with **1,000 coins**. The coins are fake, the drama is real.
 **Mines**
 `/mines bet` — find diamonds and cash out before you hit a mine. `mines` picks 2–10 mines, max 25×
 
+**Crash**
+`/crash bet` — the multiplier climbs until it crashes. Cash out in time, or let `auto_cashout` do it for you. Max 100×
+
 **Roulette**
 `/roulette bet type` — red/black, even/odd, low/high, dozen or column
 `/roulette bet number` — bet on one number (0–36) and win 36×
@@ -236,6 +244,19 @@ A 4×5 board of 20 tiles hides 2–10 mines (default 3). They're placed when the
 The multiplier after *n* diamonds is the fair price for surviving *n* picks × 0.95, rounded down to two decimals and capped at 25×. Below the cap, every way of playing returns 95 % on average, so more mines just means bigger jumps and more risk. Going for the cap is a bad deal, though: with 10 mines you need 5 diamonds in a row, which returns about 41 %. That's on purpose, since the huge multipliers (over 2000×) were blowing up the economy. Example with 3 mines: 1.11× after one diamond, 1.32× after two, 2.38× after five.
 
 Only the player who started the game can click. After 60 seconds without a click the game cashes out by itself, or refunds the bet if no tile was picked, so walking away never costs anything. The same happens if the message is deleted.
+
+## Crash
+
+The multiplier starts at 1.00× and grows faster and faster (2× after about 11.5 seconds, 10× after 38, 100× after 77) until it crashes at a point that was decided when the round started.
+
+- **Cash out:** take the current multiplier × bet. Possible once it's above 1.00×.
+- **Crash:** the round is over and the bet is gone.
+- **`auto_cashout`:** cashes out by itself at exactly that multiplier (1.01–100, two decimals), if the round gets there.
+- Reaching the max of **100×** cashes out by itself.
+
+The crash point is 0.95 / (1 − *u*) for a random *u* in [0, 1), rounded down to two decimals and capped at 100×. So the chance to reach *m* is 0.95 / *m*, and cashing out at any target returns 95 % on average. 5 % of rounds crash at 1.00× right away.
+
+The message is edited every 2 seconds, so the number on it lags a bit. When you click, the bot's own clock decides the multiplier, which is usually a little higher than what you saw. A click that arrives after the crash loses. Only the player who started the round can cash out. The round ends by itself even if the message is deleted, and when it's over the crash point is shown, also if you got out early.
 
 ## Roulette
 
@@ -316,7 +337,7 @@ scripts/            check-locales.js
 src/
   commands/         one file per slash command + index.js registry (poker.js + pokerView.js for poker)
   games/            pure game logic (no Discord code, easy to test)
-    payout.js       shared rounding for fractional multipliers (slots, mines)
+    payout.js       shared rounding for fractional multipliers (slots, mines, crash)
     poker/          cards, hand evaluator, betting rules, pots, one hand, the table
   services/         economy (all coin movement), guild settings, message cleanup,
                     pokerStore (poker persistence), pokerRoom (runs a poker table)

@@ -28,8 +28,8 @@ export function relativeTime(timestampMs) {
   return `<t:${Math.floor(timestampMs / 1000)}:R>`;
 }
 
-export function formatNumber(locale, value) {
-  return new Intl.NumberFormat(locale === 'da' ? 'da-DK' : 'en-US').format(value);
+export function formatNumber(locale, value, options) {
+  return new Intl.NumberFormat(locale === 'da' ? 'da-DK' : 'en-US', options).format(value);
 }
 
 // Shared bet validation. Discord enforces min/max on the option too,

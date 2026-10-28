@@ -84,6 +84,13 @@
         "mines": "How many mines are hidden among the 20 tiles (2–10, default 3)"
       }
     },
+    "crash": {
+      "description": "Watch the multiplier climb and cash out before it crashes",
+      "options": {
+        "bet": "How many coins you want to bet",
+        "auto_cashout": "Cash out automatically at this multiplier, e.g. 2 (1.01–100)"
+      }
+    },
     "roulette": {
       "description": "European roulette against the house: bet on a color, a group or a single number",
       "options": {
@@ -223,7 +230,7 @@
       "economyTitle": "Economy",
       "economy": "`/balance` — check your wallet\n`/daily` — daily coins (streaks give a bonus)\n`/work` — earn coins every 30 minutes\n`/give` — give coins to someone\n`/leaderboard` — the richest, or the biggest net losers",
       "gamesTitle": "Games",
-      "games": "`/coinflip` — 50/50 against the house\n`/coinflip opponent:@user` — challenge a specific member\n`/coinflip mode:Open challenge` — anyone on the server can accept\n`/rps` — rock, paper, scissors against the bot (same `opponent` and `mode` options)\n`/blackjack solo bet` — blackjack alone against the dealer (Hit, Stand, Double, Split, Insurance)\n`/blackjack create` — open a table up to 5 players can join\n`/slots spin bet` — slot machines: pick Fruit, Classic or Jackpot with `machine`, and up to 5 at once with `spins` (`/slots paytable` shows the payouts)\n`/mines bet` — find diamonds on a 4×5 board and cash out before you hit a mine (`mines` sets 2–10 mines, max 25×)\n`/roulette bet type` — European roulette: red/black, even/odd, dozens or columns (`number` bets on a single number for 36×)\n`/plinko bet` — balls through pegs: `rows` 8/12/16, `risk` low/medium/high (up to 1000×), up to 10 with `balls`\n`/poker create` — No-Limit Texas Hold'em for 2–6 players with real side pots",
+      "games": "`/coinflip` — 50/50 against the house\n`/coinflip opponent:@user` — challenge a specific member\n`/coinflip mode:Open challenge` — anyone on the server can accept\n`/rps` — rock, paper, scissors against the bot (same `opponent` and `mode` options)\n`/blackjack solo bet` — blackjack alone against the dealer (Hit, Stand, Double, Split, Insurance)\n`/blackjack create` — open a table up to 5 players can join\n`/slots spin bet` — slot machines: pick Fruit, Classic or Jackpot with `machine`, and up to 5 at once with `spins` (`/slots paytable` shows the payouts)\n`/mines bet` — find diamonds on a 4×5 board and cash out before you hit a mine (`mines` sets 2–10 mines, max 25×)\n`/crash bet` — the multiplier climbs until it crashes: cash out in time (`auto_cashout` does it for you, max 100×)\n`/roulette bet type` — European roulette: red/black, even/odd, dozens or columns (`number` bets on a single number for 36×)\n`/plinko bet` — balls through pegs: `rows` 8/12/16, `risk` low/medium/high (up to 1000×), up to 10 with `balls`\n`/poker create` — No-Limit Texas Hold'em for 2–6 players with real side pots",
       "settingsTitle": "Settings",
       "settings": "`/language` — change the bot's language (requires Manage Server)",
       "footer": "Everyone starts with {amount}. The coins are fake, the drama is real."
@@ -435,6 +442,38 @@
         "One more tile, they said."
       ],
       "maxed": "That's the max of **{max}×**, so it cashed out by itself."
+    },
+    "crash": {
+      "title": "Crash",
+      "status": "Bet: **{bet}**",
+      "statusAuto": "Bet: **{bet}** · Auto cash out: **{target}×**",
+      "rising": "📈 **{multiplier}×**",
+      "current": "Cash out now: {amount}",
+      "footer": "Updates every two seconds. The server's clock counts when you click. Max {max}×.",
+      "cashOut": "Cash out ({amount})",
+      "notYourGame": "That's not your round. Start your own with `/crash`.",
+      "invalidAuto": "Auto cash out must be between {min}× and {max}× with at most two decimals.",
+      "busted": "💥 Crashed at **{multiplier}×**. You lost **{amount}**.",
+      "cashedOut": "You cashed out at **{multiplier}×**: {amount} paid out, **{profit}** profit.",
+      "crashedAt": "It crashed at **{multiplier}×**.",
+      "maxed": "That's the max of **{max}×**, so it cashed out by itself.",
+      "titles": {
+        "busted": "Crashed!",
+        "cashed": "Cashed out!",
+        "maxed": "Max win!"
+      },
+      "winLines": [
+        "Out in time. That is the whole trick.",
+        "The line kept going without you, and that is fine.",
+        "Cold hands, warm coins.",
+        "A sure win beats a good story."
+      ],
+      "loseLines": [
+        "Just one more tick, you thought.",
+        "The rocket had other plans.",
+        "Greed is a bad pilot.",
+        "It went up, and then it went down."
+      ]
     },
     "roulette": {
       "types": {

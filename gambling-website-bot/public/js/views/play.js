@@ -2,6 +2,7 @@ import { api } from '../api.js';
 import { clear, h } from '../dom.js';
 import { coins, dateTime, num, t } from '../i18n.js';
 import { blackjack } from './blackjack.js';
+import { crash } from './crash.js';
 import { plinko } from './plinko.js';
 import { poker } from './poker.js';
 
@@ -9,8 +10,8 @@ import { poker } from './poker.js';
 // what the player picked, gets the settled result back, and only then animates towards it.
 // Nothing in this file can change an outcome.
 
-const GAMES = ['blackjack', 'poker', 'roulette', 'slots', 'plinko', 'mines', 'coinflip', 'rps'];
-const GAME_ICONS = { coinflip: '🪙', slots: '🎰', roulette: '🎡', mines: '💎', blackjack: '🃏', poker: '♥️', rps: '✊', plinko: '🎯' };
+const GAMES = ['blackjack', 'poker', 'roulette', 'slots', 'plinko', 'mines', 'crash', 'coinflip', 'rps'];
+const GAME_ICONS = { coinflip: '🪙', slots: '🎰', roulette: '🎡', mines: '💎', blackjack: '🃏', poker: '♥️', rps: '✊', plinko: '🎯', crash: '📈' };
 const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Recent results per game, kept while the page is open so switching tabs doesn't lose them.
@@ -19,7 +20,7 @@ const HISTORY_SIZE = 14;
 
 export async function renderPlay(main, app, sub, extra = null) {
   const game = GAMES.includes(sub) ? sub : 'blackjack';
-  // Fetched for the balance and a mines game that may still be running from before a reload.
+  // Fetched for the balance and a mines or crash game that may still be running from before a reload.
   const me = await api(`/api/guilds/${app.guild.id}/me`);
   app.setBalance(me.balance);
 
@@ -37,7 +38,7 @@ export async function renderPlay(main, app, sub, extra = null) {
   const ctx = { app, base: `/api/guilds/${app.guild.id}`, meta: app.meta };
   // The card games live in their own modules and borrow the shared controls from here.
   const shared = { betControl, setDisabled, tableId: extra };
-  ({ coinflip, slots, roulette, mines, rps, blackjack, poker, plinko })[game](panel, ctx, me, shared);
+  ({ coinflip, slots, roulette, mines, crash, rps, blackjack, poker, plinko })[game](panel, ctx, me, shared);
 }
 
 // --- Shared pieces ---------------------------------------------------------------

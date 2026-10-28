@@ -1,4 +1,4 @@
-import { POKER_DEFAULTS, coinflip, mines, payout, plinko, roulette, rps, slots } from '../bot.js';
+import { POKER_DEFAULTS, coinflip, crash, mines, payout, plinko, roulette, rps, slots } from '../bot.js';
 import { HttpError } from '../http/respond.js';
 
 // Everything here is server side: the browser only sends what the player picked, and the
@@ -164,6 +164,12 @@ export function gameMeta(botConfig) {
       default: mines.DEFAULT_MINES,
       maxMultiplier: mines.MAX_MULTIPLIER,
       houseEdge: mines.HOUSE_EDGE,
+    },
+    crash: {
+      growthRate: crash.GROWTH_RATE,
+      maxMultiplier: crash.MAX_MULTIPLIER,
+      minAutoCashOut: crash.MIN_AUTO_CASH_OUT,
+      houseEdge: crash.HOUSE_EDGE,
     },
   };
 }

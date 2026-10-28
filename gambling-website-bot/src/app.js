@@ -20,7 +20,7 @@ const ADMIN_LOG_SIZE = 25;
  * Builds the HTTP server. Everything it needs is passed in, so tests can run it against
  * an in-memory database and a fake Discord login.
  */
-export function createApp({ config, botConfig, economy, profiles, stats, sessions, auth, minesManager, blackjack, poker }) {
+export function createApp({ config, botConfig, economy, profiles, stats, sessions, auth, minesManager, crashManager, blackjack, poker }) {
   const games = botConfig.games;
   const meta = gameMeta(botConfig);
   const loginLimiter = new RateLimiter({ windowMs: 60_000, max: 10 });
@@ -166,6 +166,7 @@ export function createApp({ config, botConfig, economy, profiles, stats, session
       balance: economy.getBalance(guildId, userId),
       ...stats.player(guildId, userId),
       mines: minesManager.current(guildId, userId),
+      crash: crashManager.current(guildId, userId),
       blackjack: blackjack.current(guildId, userId),
       rewards: rewardStatus(guildId, userId),
     });
@@ -189,6 +190,14 @@ export function createApp({ config, botConfig, economy, profiles, stats, session
   gameRoute('mines/start', (player, body) => minesManager.start(player.guildId, player.userId, body));
   gameRoute('mines/reveal', (player, body) => minesManager.reveal(player.guildId, player.userId, body.tile));
   gameRoute('mines/cashout', (player) => minesManager.cashOut(player.guildId, player.userId));
+  gameRoute('crash/start', (player, body) => crashManager.start(player.guildId, player.userId, body));
+  gameRoute('crash/cashout', (player) => crashManager.cashOut(player.guildId, player.userId));
+  // Polled while a round runs, to find out when it crashed. Read-only, so it skips the
+  // action limit and can't get in the way of a cash out.
+  router.get('/api/guilds/:guildId/crash', (req, res, ctx) => {
+    const { guildId, userId } = requireGuild(ctx);
+    sendJson(res, 200, { crash: crashManager.state(guildId, userId) });
+  });
   gameRoute('rps', (player, body) => playRps(economy, games, player, body));
   gameRoute('plinko', (player, body) => playPlinko(economy, games, player, body));
   gameRoute('blackjack/start', (player, body) => blackjack.start(player.guildId, player.userId, player.user.name, body));

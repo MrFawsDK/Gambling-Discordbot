@@ -15,7 +15,7 @@ A website for the [gambling bot](../gambling-bot): statistics about what people 
   - Latest games and biggest wins, marked as played in Discord or on the website
 - **My stats:** your balance, win rate, net result, per game and your latest games.
 - **Rewards:** claim `/daily` and `/work` from the "My stats" page. Same amounts, streak and cooldowns as the bot (`Economy.claimDaily/work`), and the cooldowns are shared, so claiming in Discord counts on the website and the other way round.
-- **Games:** blackjack, poker (Texas Hold'em), roulette, slots (all three machines, up to 5 spins), mines, coinflip and rock-paper-scissors. Same rules and odds as the bot, because the website runs the bot's own game code.
+- **Games:** blackjack, poker (Texas Hold'em), roulette, slots (all three machines, up to 5 spins), mines, crash, coinflip and rock-paper-scissors. Same rules and odds as the bot, because the website runs the bot's own game code.
   - Blackjack is the bot's `BlackjackTable` played solo against the dealer: 6-deck shoe kept between rounds, insurance, double, split up to four hands, the same timers.
   - Poker tables are the bot's `PokerRoom` + `PokerStore`, so they use the same tables in the database, tagged `source = 'web'`. They're separate from the tables in Discord. The browser polls the table about once a second.
 - **Admin page** (`#/admin`), only for the user IDs in the bot's `adminIds` (the admin role from Discord doesn't count, since the website can't see roles). Shows every player's balance per server and can add or remove coins per player, give everyone coins, or give coins to a Discord ID. Same `Economy.grant/revoke/grantAll` as `/addcoins` and `/removecoins`.
@@ -60,7 +60,7 @@ No `npm install` is needed, since there are no dependencies.
 
 - Both processes open the same SQLite file in WAL mode with a busy timeout, so they can read and write at the same time.
 - All money moves through the bot's `Economy` class in transactions, exactly as in the bot.
-- Bets in escrow (a running mines game) are tagged `source = 'web'`. On startup the website only refunds its **own** interrupted games, and the bot only refunds its own. Neither can cancel a game running in the other.
+- Bets in escrow (a running mines or crash game) are tagged `source = 'web'`. On startup the website only refunds its **own** interrupted games, and the bot only refunds its own. Neither can cancel a game running in the other.
 - Every finished game is logged in `game_history` with `game` and `source` (`discord` or `web`). The statistics are built from that table and from the `users` table.
 - The history starts with bot v0.11.0. Older games only count in the totals and leaderboards.
 
@@ -70,7 +70,7 @@ No `npm install` is needed, since there are no dependencies.
 - **Sessions:** a random 256-bit token in an `HttpOnly`, `SameSite=Lax` cookie (`Secure` on https), valid for 24 hours. Sessions live in memory, so a restart logs everyone out. The server list is only fetched at login, so someone who leaves a server can see its stats until the session runs out.
 - **Access:** every `/api/guilds/:id/...` call checks that the ID is a Discord snowflake, that you're a member, and that the bot is in that server.
 - **CSRF:** every POST must have our own `Origin` and a JSON body, so a form or script on another site can't play for you.
-- **Server-side games:** the browser only sends what you pick. The result is decided and paid before the response is sent. The mines are never sent to the browser until the game is over.
+- **Server-side games:** the browser only sends what you pick. The result is decided and paid before the response is sent. The mines and the crash point are never sent to the browser until the game is over. A crash cash out is timed on the server's clock; the curve in the browser is only a preview.
 - **Input:** bets must be whole numbers inside the limits. Bodies are capped at 4 KB. Machine and bet type names are checked against the real lists (`hasOwn`, so `constructor` doesn't work).
 - **Headers:** a strict CSP (only our own scripts and styles, and images from `cdn.discordapp.com`), `X-Frame-Options: DENY`, `nosniff`, `Referrer-Policy: no-referrer`, and HSTS on https.
 - **XSS:** the frontend never uses `innerHTML`. Names from Discord are always inserted as text.
@@ -94,7 +94,7 @@ src/
   app.js            routes, auth flow, access checks
   server.js         startup and graceful shutdown
   auth/             Discord OAuth2, sessions
-  games/            coinflip/slots/roulette, mines sessions
+  games/            coinflip/slots/roulette, mines and crash sessions
   http/             cookies, JSON body, static files, router, security headers
   services/         statistics queries, rate limiter
 test/

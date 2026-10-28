@@ -35,7 +35,8 @@
       "roulette": "Roulette",
       "poker": "Poker",
       "unknown": "Andet",
-      "plinko": "Plinko"
+      "plinko": "Plinko",
+      "crash": "Crash"
     }
   },
   "home": {
@@ -244,6 +245,21 @@
     "nextLabel": "Næste diamant",
     "riskHint": "Flere miner giver højere gevinst pr. diamant ({min}–{max})."
   },
+  "crash": {
+    "description": "Multiplieren stiger, indtil den crasher. Tag gevinsten i tide. Maks {max}×.",
+    "start": "Start",
+    "again": "Ny runde",
+    "auto": "Auto-hæv",
+    "autoOff": "Fra",
+    "autoHint": "Hæver af sig selv ved denne multiplier ({min}–{max}). Tomt betyder fra.",
+    "cashOut": "Tag gevinsten",
+    "serverClock": "Det er serverens ur, der tæller, når du trykker. Tallet her er en forhåndsvisning.",
+    "outcomes": {
+      "busted": "Crashede ved {crash}. Du tabte {amount}.",
+      "cashed": "Gevinsten taget ved {multiplier}: {amount} udbetalt. Den crashede ved {crash}.",
+      "maxed": "Maks {multiplier} nået: {amount} udbetalt."
+    }
+  },
   "errors": {
     "unauthorized": "Du skal logge ind først.",
     "notMember": "Du har ikke adgang til den server.",
@@ -256,6 +272,10 @@
     "minesInProgress": "Du har allerede et mines-spil i gang.",
     "minesNoGame": "Det mines-spil er slut.",
     "minesNoPicks": "Find mindst én diamant, før du tager gevinsten.",
+    "crashInProgress": "Du har allerede en crash-runde i gang.",
+    "crashNoGame": "Den crash-runde er slut.",
+    "crashTooEarly": "Vent til multiplieren er over 1,00×.",
+    "crashBadAuto": "Auto-hæv skal være mellem {min}× og {max}× med højst to decimaler.",
     "roulettePickOne": "Vælg enten en type eller et tal, ikke begge.",
     "badOrigin": "Forespørgslen blev blokeret. Genindlæs siden.",
     "notFound": "Ikke fundet.",

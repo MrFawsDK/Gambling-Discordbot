@@ -47,6 +47,6 @@ export function dateTime(ms, options = { dateStyle: 'short', timeStyle: 'short' 
 }
 
 export function gameName(game) {
-  const known = ['coinflip', 'rps', 'blackjack', 'slots', 'mines', 'roulette', 'poker', 'plinko'];
+  const known = ['coinflip', 'rps', 'blackjack', 'slots', 'mines', 'roulette', 'poker', 'plinko', 'crash'];
   return t(`common.games.${known.includes(game) ? game : 'unknown'}`);
 }

@@ -37,7 +37,7 @@ const client = new Client({
 const cleanup = new MessageCleanup(db, client, config.messageLifetimeMs);
 
 function createContext(locale) {
-  const number = (value) => formatNumber(locale, value);
+  const number = (value, options) => formatNumber(locale, value, options);
   return {
     locale,
     config,
